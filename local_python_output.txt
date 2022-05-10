@@ -1,0 +1,268 @@
+C
+210, 
+2022-06-25 00:00:00, 
+BIR, 
+LON, 
+10, 
+50, 
+C
+new row for relation "flight" violates check constraint "flight_flightdate_check"
+DETAIL:  Failing row contains (211, 2020-06-29 00:00:00, STN, BHD, 10, 35).
+
+
+C
+new row for relation "flight" violates check constraint "check_origin_dest"
+DETAIL:  Failing row contains (212, 2022-07-29 00:00:00, BRC, BRC, 10, 40).
+
+
+B
+127, 
+Jhonny, 
+Picazo, 
+3445013, 
+Spanish, 
+1987-07-30, 
+B
+date/time field value out of range: "30/2/2014
+"
+LINE 1: ...'128', 'Keerthi', 'Lever', '83890083', 'British', '30/2/2014
+                                                             ^
+
+P
+ FlightID FlightDate Destination  Booked Seats  Cancelled Seats  Available Seats  Maximum Capacity
+      200 2022-06-21         SLO            11                0               -1                10
+      201 2022-08-14         RDG             5                0                7                12
+      202 2022-08-12         SLO             4                0                6                10
+      203 2022-08-25         NOR             4                0                2                 6
+      204 2022-08-02         GLA             3                0                7                10
+      205 2022-09-01         LAN             1                0               11                12
+      206 2022-09-30         BIR             0                0               10                10
+      207 2022-09-22         BIR             0                0               10                10
+      210 2022-06-25         LON             0                0               10                10
+
+P1
+ FlightID FlightDate Destination  Booked Seats  Cancelled Seats  Available Seats  Maximum Capacity
+      210 2022-06-25         LON             0                0               10                10
+
+P2
+ FlightID FlightDate Destination  Booked Seats  Cancelled Seats  Available Seats  Maximum Capacity
+      210 2022-06-25         LON             0                0               10                10
+
+P3
+ FlightID FlightDate Destination  Booked Seats  Cancelled Seats  Available Seats  Maximum Capacity
+      206 2022-09-30         BIR             0                0               10                10
+
+Q
+ FlightID FlightDate Destination  Booked Seats  Cancelled Seats  Available Seats  Maximum Capacity
+      201 2022-08-14         RDG             5                0                7                12
+
+R
+ CustomerID     Full Name  Total bookings Total Spend
+        104 Vishal Sekhar               9         420
+        101 Warren Buffet               8         240
+        102     Luis Dawn               7         210
+        106 Prerana Singh               1          45
+        103 Seema Parveen               1          40
+        107 Micheal Karen               1          30
+        105   Kiran Jones               1          30
+        108   Rony Samuel               0           0
+        109  Kieran Smith               0           0
+
+T
+1041, 
+116, 
+201, 
+2, 
+R, 
+2022-04-22 13:28:24.700637, 
+80, 
+T1
+ CustomerID First Name Surname               BillingAddress                  email
+        101     Warren  Buffet          44 The Villa, Leeds     W.Buffet@gmail.com
+        102       Luis    Dawn      12 The West, Manchester     L.Dawn@hotmail.com
+        103      Seema Parveen           10 Durem St,London     Seema.P2@gmail.com
+        104     Vishal  Sekhar   32 The Derby Road, Norwich     V.Sekhar@uea.ac.uk
+        105      Kiran   Jones        22 Hill Road, Reading    K.Jones@aberc.ac.uk
+        106    Prerana   Singh 47 Arnfield Road, Chelmsford Prerna.Singh@gmail.com
+        107    Micheal   Karen     55 Habib Road, Bracknell      M.Karen@gmail.com
+        108       Rony  Samuel   1 Gilbard Road, Birmingham  Rony.Samuel@pcc.co.uk
+        109     Kieran   Smith    47 Matt Lane, Southampton    K.Smith@hotmail.com
+        116       Hill   Smith       45 John Street,Reading    H.Smith@hotmail.com
+
+T4
+ BookingID  CustomerID  FlightID  Number of Seats Status               Booking Time Total Cost
+      1000         101       200                4      R 2022-04-22 13:22:15.973532        120
+      1001         102       200                3      R 2022-04-22 13:22:15.973532         90
+      1002         102       200                4      R 2022-04-22 13:22:15.973532        120
+      1003         101       201                4      R 2022-04-22 13:22:15.973532        120
+      1004         103       201                1      R 2022-04-22 13:22:15.973532         40
+      1005         104       202                3      R 2022-04-22 13:22:15.973532         90
+      1006         105       202                1      R 2022-04-22 13:22:15.973532         30
+      1007         104       203                3      R 2022-04-22 13:22:15.973532        135
+      1008         106       203                1      R 2022-04-22 13:22:15.973532         45
+      1009         104       204                3      R 2022-04-22 13:22:15.973532        195
+      1010         107       205                1      R 2022-04-22 13:22:15.973532         30
+      1041         116       201                2      R 2022-04-22 13:28:24.700637         80
+
+U
+ PassengerID First Name Surname Passport Number Nationality        Dob
+         100      Julia Roberts        xd782883     British 1960-12-30
+         119       Robb   Stark        45783980     British 1996-07-19
+         120      Jason   Momoa       257887747     British 1992-01-01
+         124        Kim    Thor        02746493     British 1999-07-24
+         127     Jhonny  Picazo         3445013     Spanish 1987-07-30
+
+S
+Number of seats allocated for the flight are already booked.
+CONTEXT:  PL/pgSQL function seat_allocation() line 7 at RAISE
+
+V
+ BookingID  PassengerID SeatNumber
+      1000          101       1A  
+      1000          102       1B  
+      1000          103       1C  
+      1000          104       1D  
+      1001          105       2A  
+      1001          106       2B  
+      1001          107       2C  
+      1002          108       3A  
+      1002          109       3B  
+      1002          110       3C  
+      1003          101       4A  
+      1003          102       4B  
+      1003          103       4C  
+      1003          104       4D  
+      1004          114       5A  
+      1005          111       5B  
+      1005          112       5C  
+      1005          113       5D  
+      1006          115       6A  
+      1007          116       6B  
+      1007          117       6C  
+      1007          118       6D  
+      1008          115       7A  
+      1009          121       7B  
+      1009          122       7C  
+      1009          123       7D  
+
+S
+Number of seats allocated for the flight are already booked.
+CONTEXT:  PL/pgSQL function seat_allocation() line 7 at RAISE
+
+V
+ BookingID  PassengerID SeatNumber
+      1000          101       1A  
+      1000          102       1B  
+      1000          103       1C  
+      1000          104       1D  
+      1001          105       2A  
+      1001          106       2B  
+      1001          107       2C  
+      1002          108       3A  
+      1002          109       3B  
+      1002          110       3C  
+      1003          101       4A  
+      1003          102       4B  
+      1003          103       4C  
+      1003          104       4D  
+      1004          114       5A  
+      1005          111       5B  
+      1005          112       5C  
+      1005          113       5D  
+      1006          115       6A  
+      1007          116       6B  
+      1007          117       6C  
+      1007          118       6D  
+      1008          115       7A  
+      1009          121       7B  
+      1009          122       7C  
+      1009          123       7D  
+
+W1
+ Allocated Seats
+               4
+
+W2
+1000, 
+101, 
+200, 
+4, 
+C, 
+2022-04-22 13:22:15.973532, 
+120, 
+Y
+ BookingID  CustomerID  FlightID  Number of Seats Status                BookingTime TotalCost
+      1001         102       200                3      R 2022-04-22 13:22:15.973532        90
+      1002         102       200                4      R 2022-04-22 13:22:15.973532       120
+      1003         101       201                4      R 2022-04-22 13:22:15.973532       120
+      1004         103       201                1      R 2022-04-22 13:22:15.973532        40
+      1005         104       202                3      R 2022-04-22 13:22:15.973532        90
+      1006         105       202                1      R 2022-04-22 13:22:15.973532        30
+      1007         104       203                3      R 2022-04-22 13:22:15.973532       135
+      1008         106       203                1      R 2022-04-22 13:22:15.973532        45
+      1009         104       204                3      R 2022-04-22 13:22:15.973532       195
+      1010         107       205                1      R 2022-04-22 13:22:15.973532        30
+      1041         116       201                2      R 2022-04-22 13:28:24.700637        80
+      1000         101       200                4      C 2022-04-22 13:22:15.973532       120
+
+Q
+ FlightID FlightDate Destination  Booked Seats  Cancelled Seats  Available Seats  Maximum Capacity
+      202 2022-08-12         SLO             4                0                6                10
+
+R
+ CustomerID     Full Name  Total bookings Total Spend
+        104 Vishal Sekhar               9         420
+        101 Warren Buffet               8         240
+        102     Luis Dawn               7         210
+        116    Hill Smith               2          80
+        106 Prerana Singh               1          45
+        103 Seema Parveen               1          40
+        107 Micheal Karen               1          30
+        105   Kiran Jones               1          30
+        108   Rony Samuel               0           0
+        109  Kieran Smith               0           0
+
+D
+Customer with customer id 200 has been deleted
+
+W2
+1001, 
+102, 
+200, 
+3, 
+C, 
+2022-04-22 13:22:15.973532, 
+90, 
+D
+Customer with customer id 200 has been deleted
+
+T1
+ CustomerID First Name Surname               BillingAddress                  email
+        101     Warren  Buffet          44 The Villa, Leeds     W.Buffet@gmail.com
+        102       Luis    Dawn      12 The West, Manchester     L.Dawn@hotmail.com
+        103      Seema Parveen           10 Durem St,London     Seema.P2@gmail.com
+        104     Vishal  Sekhar   32 The Derby Road, Norwich     V.Sekhar@uea.ac.uk
+        105      Kiran   Jones        22 Hill Road, Reading    K.Jones@aberc.ac.uk
+        106    Prerana   Singh 47 Arnfield Road, Chelmsford Prerna.Singh@gmail.com
+        107    Micheal   Karen     55 Habib Road, Bracknell      M.Karen@gmail.com
+        108       Rony  Samuel   1 Gilbard Road, Birmingham  Rony.Samuel@pcc.co.uk
+        109     Kieran   Smith    47 Matt Lane, Southampton    K.Smith@hotmail.com
+        116       Hill   Smith       45 John Street,Reading    H.Smith@hotmail.com
+
+Y
+ BookingID  CustomerID  FlightID  Number of Seats Status                BookingTime TotalCost
+      1002         102       200                4      R 2022-04-22 13:22:15.973532       120
+      1003         101       201                4      R 2022-04-22 13:22:15.973532       120
+      1004         103       201                1      R 2022-04-22 13:22:15.973532        40
+      1005         104       202                3      R 2022-04-22 13:22:15.973532        90
+      1006         105       202                1      R 2022-04-22 13:22:15.973532        30
+      1007         104       203                3      R 2022-04-22 13:22:15.973532       135
+      1008         106       203                1      R 2022-04-22 13:22:15.973532        45
+      1009         104       204                3      R 2022-04-22 13:22:15.973532       195
+      1010         107       205                1      R 2022-04-22 13:22:15.973532        30
+      1041         116       201                2      R 2022-04-22 13:28:24.700637        80
+      1000         101       200                4      C 2022-04-22 13:22:15.973532       120
+      1001         102       200                3      C 2022-04-22 13:22:15.973532        90
+
+X
+Flight Booking program closing down!
